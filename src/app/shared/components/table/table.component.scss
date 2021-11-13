@@ -1,0 +1,26 @@
+.table {
+  max-width: 100%;
+  &-content {
+    width: 100%;
+  }
+
+  &-search-field {
+    width: 300px;
+  }
+
+  .favorite {
+    cursor: pointer; //TODO: refer to mat theme
+    &.marked {
+      color: gold; //TODO: refer to mat theme
+      &:hover {
+        color: unset; //TODO: refer to mat theme
+      }
+    }
+    &:hover {
+      color: gold; //TODO: refer to mat theme
+    }
+  }
+}
+mat-label {
+  color: white; //TODO: refer to mat theme
+}

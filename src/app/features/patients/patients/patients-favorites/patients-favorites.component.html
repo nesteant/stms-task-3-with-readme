@@ -1,0 +1,16 @@
+<div class="actions">
+  <a mat-raised-button class="actions-main" color="primary" routerLink="/patients">
+    {{ 'All' | translate }}
+  </a>
+  <!--
+    Endpoint to fetch data: https://api.mocki.io/v2/79fb05cb
+   -->
+</div>
+<div class="patients">
+  <st-table
+          entityId="defaultId"
+          [columns]="columns"
+          [data]="patients$ | async"
+          (search)="onSearch($event)"
+          (toggleFavorites)="onToggleFavorite($event)"></st-table>
+</div>

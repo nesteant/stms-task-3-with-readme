@@ -1,0 +1,31 @@
+<div class="table">
+    <div class="table-search">
+        <mat-form-field class="table-search-field" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input type="email" matInput [formControl]="searchFormControl" placeholder="Search anything">
+        </mat-form-field>
+    </div>
+    <table class="table-content" mat-table [dataSource]="data" *ngIf="columns.length">
+        <ng-container [matColumnDef]="'favorite'">
+            <th mat-header-cell *matHeaderCellDef> {{ 'Favorite' | translate }}</th>
+            <td mat-cell *matCellDef="let entity">
+                <fa-icon class="favorite" icon="star"
+                         [ngClass]="{marked: entity.isFavorite}"
+                         (click)="toggleFavorite(entity[entityId])"></fa-icon>
+            </td>
+        </ng-container>
+
+        <ng-container *ngFor="let def of columns">
+            <ng-container [matColumnDef]="def.name">
+                <th mat-header-cell *matHeaderCellDef>{{ def.label | translate }}</th>
+                <td mat-cell
+                    *matCellDef="let entity">{{ def.dataAccessor ? def.dataAccessor(entity[def.name]) : entity[def.name] }}</td>
+            </ng-container>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+                mat-row
+                *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+    </table>
+</div>
